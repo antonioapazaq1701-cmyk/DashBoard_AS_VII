@@ -7,5 +7,6 @@
   "zip": "CRC verified",
   "ui": "10 language/topic views, filters, prediction, presentation, detail, figure zoom verified in browser",
   "mobile": "390px iframe; homepage and detail reviewed",
-  "publication": "pending"
+  "github": "Subida a main verificada mediante conector GitHub",
+  "pages": "Pendiente de activación por el propietario"
 }
