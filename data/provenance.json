@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "python_source": "01Limipieza de datos\\Tarea1\\limpieza_concrete.ipynb",
+    "r_source": "01Limipieza de datos\\Tarea1\\limpieza_concrete_R.R"
+  },
+  {
+    "id": 2,
+    "python_source": "02Regresion lineal simple y multiple\\Tarea2\\regresion_concrete.ipynb",
+    "r_source": "02Regresion lineal simple y multiple\\Tarea2\\regresion_concrete_R.R"
+  },
+  {
+    "id": 3,
+    "python_source": "03Regresion Lineal Multiple\\Tarea3\\RLMmejorecuacion_concrete.ipynb",
+    "r_source": "03Regresion Lineal Multiple\\Tarea3\\RLMmejorecuacion_concrete.R"
+  },
+  {
+    "id": 4,
+    "python_source": "04Arboles\\Tarea4\\arboles_concrete.ipynb",
+    "r_source": "04Arboles\\Tarea4\\arboles_concrete_R.R"
+  },
+  {
+    "id": 5,
+    "python_source": "05Random Forest\\Tarea5\\randomforest_concrete_python.ipynb",
+    "r_source": "05Random Forest\\Tarea5\\randomforest_concrete_R.R"
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "programs": 10,
+  "executed_sections": 116,
+  "figures": 42,
+  "python_notebooks": "all cells executed, no errors, displayed code identical",
+  "download_links": "all HTTP 200",
+  "zip": "CRC verified",
+  "ui": "10 language/topic views, filters, prediction, presentation, detail, figure zoom verified in browser",
+  "mobile": "390px iframe; homepage and detail reviewed",
+  "publication": "pending"
+}
