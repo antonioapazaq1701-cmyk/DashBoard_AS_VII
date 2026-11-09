@@ -23,5 +23,20 @@
     "id": 5,
     "python_source": "05Random Forest\\Tarea5\\randomforest_concrete_python.ipynb",
     "r_source": "05Random Forest\\Tarea5\\randomforest_concrete_R.R"
+  },
+  {
+    "id": 6,
+    "python_source": "06Maquina de soporte de vectores/Tarea6/svr_concrete_Python.ipynb",
+    "sha256": "bc4028bbf7f0dbf955489758bbb53405feceac28ff3aefa3ab72b6cd2b1a5884"
+  },
+  {
+    "id": 7,
+    "python_source": "07XGFBoost/Tarea7/xgboost_concrete_Python.ipynb",
+    "sha256": "2c794c2f7acc661b69593d7af8a14c92bd5a22bbf17a615ad9bad30b899f54b8"
+  },
+  {
+    "id": 8,
+    "python_source": "08Redes Neuronales/Tarea8/red_neuronal_concrete_Python.ipynb",
+    "sha256": "4dfec1f495c8e0440bc05d5569cfe7d4c3a1e242984dd56de468cc44d8fd3d93"
   }
 ]

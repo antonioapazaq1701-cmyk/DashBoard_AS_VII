@@ -1,0 +1,9 @@
+# Entorno del cuaderno de Redes neuronales (Python 3.12).
+numpy
+pandas==3.0.6
+matplotlib
+seaborn
+scikit-learn==1.9.1
+tensorflow==2.21.0
+keras==3.15.1
+notebook

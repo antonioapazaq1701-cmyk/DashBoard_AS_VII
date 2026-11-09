@@ -35,3 +35,62 @@ window.CONCEPTS = [
 ['write.csv|to_csv|write_text|savefig','Guardar resultados','Escribe una tabla, reglas o una figura en disco. Es una salida del programa, diferente del CSV original que se utiliza como entrada.'],
 ['optuna|trial\\.|study\\.','Optimización complementaria','Evalúa propuestas de hiperparámetros y registra su puntuación de validación. Aquí complementa, sin sustituir, el modelo final de Grid Search.']
 ];
+
+window.TOPICS.push(
+ {
+  id:6, languages:['Python'], title:'Máquinas de soporte vectorial', short:'Regresión con cuatro kernels',
+  question:'¿Qué forma de curva predice mejor la resistencia?',
+  intro:'Compara cuatro kernels de SVR para estimar la resistencia del concreto. Las recetas se separan por composición y los predictores se estandarizan dentro de cada pliegue.',
+  takeaway:'RBF obtiene el menor RMSE de validación cruzada (6,683 MPa) entre los kernels probados. En la prueba reservada, su RMSE es 6,823 MPa.',
+  input:'Concrete_Data sin duplicados, ocho predictores y resistencia en MPa.',
+  output:'Comparación de kernels, diagnósticos de predicción y estimaciones para recetas hipotéticas.',
+  method:'SVR con kernels lineal, polinomial, RBF y sigmoidal. GroupKFold y escalado dentro del Pipeline.',
+  caveat:'El RBF se elige por validación cruzada. Su búsqueda ajusta C, gamma y epsilon por etapas. La prueba por recetas de este cuaderno se interpreta dentro de su propio protocolo.',
+  analogy:'Imagina una franja alrededor de la curva de predicción. SVR tolera los errores pequeños que quedan dentro de la franja y equilibra los errores fuera de ella con la complejidad de la curva.',
+  theory:[
+   ['Kernel','Define cómo se comparan dos mezclas. RBF da mayor peso a las cercanas en las variables estandarizadas y permite curvar la predicción.'],
+   ['C, gamma y epsilon','C regula el costo de los errores fuera de la franja. Gamma controla qué tan local es la influencia en RBF. Epsilon fija el ancho de tolerancia en MPa.'],
+   ['Cómo comparar','Lee primero RMSE CV para elegir. En el gráfico de prueba, la diagonal representa coincidencia exacta entre resistencia observada y predicha.']
+  ]
+ },
+ {
+  id:7, languages:['Python'], title:'XGBoost', short:'Árboles que corrigen el error anterior',
+  question:'¿Cuánto baja el error al ajustar los árboles sucesivos?',
+  intro:'Entrena un modelo base y optimiza XGBoost con validación cruzada por recetas y parada temprana. Los dos modelos se evalúan en las mismas 206 observaciones de prueba.',
+  takeaway:'El ajuste reduce el RMSE de prueba de 6,640 a 6,030 MPa. La mejora de 0,610 MPa se mide sobre la misma partición.',
+  input:'Concrete_Data sin duplicados, ocho predictores en sus unidades originales y grupos por receta.',
+  output:'Comparación base frente a optimizado, diagnósticos de error e importancias por ganancia.',
+  method:'XGBRegressor, búsqueda de seis hiperparámetros y parada temprana con validación interna.',
+  caveat:'La validación interna decide cuándo parar. La CV de diez pliegues reutiliza la configuración seleccionada y la prueba reservada compara base y optimizado.',
+  analogy:'El primer árbol aproxima la resistencia. Cada árbol siguiente añade una corrección a la predicción conjunta según el error que sigue pendiente.',
+  theory:[
+   ['Tasa de aprendizaje','Escala la contribución de cada árbol. Una tasa baja suele requerir más árboles para lograr un ajuste similar.'],
+   ['Parada temprana','Vigila la métrica en recetas de validación y conserva la iteración de mejor desempeño allí. Las recetas de prueba quedan reservadas.'],
+   ['Leer los resultados','Compara el RMSE base y optimizado en la misma prueba. En el gráfico de residuos, revisa dispersión y patrones respecto de cero. La ganancia indica cuánto contribuyó una variable a las divisiones del modelo.']
+  ]
+ },
+ {
+  id:8, languages:['Python'], title:'Redes neuronales', short:'Capas densas con entrenamiento supervisado',
+  question:'¿Qué aprende una red a partir de los ingredientes y la edad?',
+  intro:'Entrena una red densa con Keras para estimar la resistencia. Estandariza predictores y respuesta con datos de entrenamiento y recupera MPa para evaluar y presentar los resultados.',
+  takeaway:'La mejor época de validación es la 164. En las 138 observaciones de prueba, el RMSE es 6,893 MPa y el MAE es 4,532 MPa.',
+  input:'Concrete_Data sin duplicados, ocho predictores, resistencia en MPa y tres conjuntos separados por receta.',
+  output:'Resumen de arquitectura, curvas de aprendizaje, diagnósticos de prueba e importancia por permutación.',
+  method:'Capas densas con activación ReLU, regularización, escalado de X e y, y parada temprana.',
+  caveat:'La época se selecciona por pérdida de validación. Las métricas de prueba corresponden a una sola partición y pueden variar con otras recetas o entornos de entrenamiento.',
+  analogy:'Cada capa combina señales de la anterior. La red modifica sus pesos para reducir el error de predicción y la capa final entrega un valor numérico de resistencia.',
+  theory:[
+   ['Capas densas','Cada neurona combina las entradas de la capa anterior con pesos y sesgo. ReLU permite representar relaciones curvas y la salida lineal entrega una estimación continua.'],
+   ['Curvas de aprendizaje','El eje horizontal cuenta épocas. Una pérdida de entrenamiento que baja mientras la de validación sube puede indicar sobreajuste. El MAE convertido a MPa permite interpretar la escala del error.'],
+   ['Importancia por permutación','Mezcla una columna manteniendo fijas las otras y mide cuánto cae R². Una caída grande indica que la red dependía de esa información en esta prueba.']
+  ]
+ }
+);
+
+window.CONCEPTS.push(
+ ['SVR\\(|kernel','Kernels en SVR','El kernel define la forma de comparar mezclas. C, gamma y epsilon regulan la flexibilidad y la tolerancia al error.'],
+ ['XGBRegressor','Boosting de gradiente','Añade árboles sucesivos que corrigen el error de la predicción acumulada y aplica controles de complejidad.'],
+ ['early_stopping_rounds|EarlyStopping','Parada temprana','Usa la métrica de validación para conservar el mejor punto del entrenamiento.'],
+ ['keras.Sequential|layers.Dense','Capas densas','Cada capa combina entradas con pesos y sesgos. La salida lineal de una sola neurona representa la resistencia estimada.'],
+ ['inverse_transform','Volver a MPa','Aplica el inverso de la estandarización de la respuesta antes de interpretar el error o comunicar la predicción.']
+);

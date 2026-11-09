@@ -1,12 +1,9 @@
 {
-  "programs": 10,
-  "executed_sections": 116,
-  "figures": 42,
-  "python_notebooks": "all cells executed, no errors, displayed code identical",
-  "download_links": "all HTTP 200",
-  "zip": "CRC verified",
-  "ui": "10 language/topic views, filters, prediction, presentation, detail, figure zoom verified in browser",
-  "mobile": "390px iframe; homepage and detail reviewed",
-  "github": "Subida a main verificada mediante conector GitHub",
-  "pages": "Pendiente de activación por el propietario"
+  "programs": 13,
+  "executed_sections": 150,
+  "figures": 59,
+  "advanced_notebooks": "34 bloques ejecutados importados. Código y figuras verificados contra los cuadernos originales.",
+  "download_links": "Archivos del ZIP verificados por HTTP en la vista local",
+  "zip": "CRC y contenido verificados",
+  "ui": "Ocho tarjetas, diez pantallas de presentación, navegación por los temas 6–8, tablas, ampliación de figura, Detallado y catálogo de descargas verificados en el navegador"
 }

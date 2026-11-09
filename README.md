@@ -1,6 +1,6 @@
 # Concrete Lab · DashBoard_AS_VII
 
-Dashboard académico de Aprendizaje Supervisado, VII semestre. Cinco temas con sus programas R y Python, resultados ejecutados, figuras ampliables y descargas.
+Dashboard académico de Aprendizaje Supervisado, VII semestre. Ocho temas, trece programas con resultados ejecutados, figuras ampliables y descargas. Los temas 1–5 tienen R y Python. SVR, XGBoost y Redes neuronales incluyen los cuadernos ejecutados en Python.
 
 ## Abrir y publicar
 
@@ -10,10 +10,10 @@ Para verlo localmente, desde esta carpeta: `python -m http.server 8788`, luego a
 
 ## Recorrido
 
-- Inicio: presentación del problema y acceso a los cinco temas.
+- Inicio: presentación del problema y acceso a los ocho temas.
 - Explorar datos: filtros, dispersión, tabla completa y simulación de la ecuación lineal del tema 2 Python.
 - Temas: un bloque por pantalla, con entrada, código, salida y explicación breve.
-- Presentar: siete pantallas para una exposición.
+- Presentar: diez pantallas para una exposición.
 - Detallado: enlace discreto del footer; teoría, lectura de los bloques y guía de líneas. Es una página pública, no un área protegida.
 - Descargas: programas, cuadernos ejecutados, CSV original/limpio y ZIP.
 
@@ -21,7 +21,7 @@ Las ejecuciones están guardadas; Pages no ejecuta R ni Python. `data/tema*.json
 
 ## Métodos y alcance
 
-Se usan las tareas originales de las cinco carpetas del curso. Las diferencias entre Python y R se conservan y explican. La partición por grupos del árbol Python difiere del muestreo por filas en R. No se presenta un ranking cruzado entre protocolos distintos. Los modelos usan Concrete_Data original; la copia limpia se entrega por separado.
+Se usan las tareas de las ocho carpetas del curso. Los temas 6–8 leen Concrete_Data, eliminan duplicados y mantienen cada receta en un único conjunto según los siete ingredientes, con independencia de su edad. El RMSE se interpreta dentro de cada protocolo. La comparación de XGBoost base y optimizado usa el mismo conjunto de prueba.
 
 Correcciones: rutas portables; regresión del tema 2 Python con sklearn como el ejemplo; figura del árbol Python completo; R² predictivo en el bosque R; estandarización interna por pliegue para Ridge R y denominador correcto de actualización Lasso; semilla de Optuna; control de paralelismo. Algunos selectores Python conservan el escalado previo a CV de la tarea: limitación explícita.
 
@@ -30,6 +30,8 @@ Los temas 1–3 omiten imputación innecesaria y bloques de categorías inexiste
 ## Reproducibilidad
 
 Ver `downloads/LEEME.md`, `downloads/requirements.txt` e `instalar_paquetes_R.R`. Scripts del armado en `tools`. `prepare.py` representa la importación inicial; las copias finales corregidas son las de `downloads`. No regenerar con prepare.py si se desea conservar correcciones posteriores. El ejecutor necesita nbclient y jsonlite; Windows R requiere un directorio temporal sin espacios (`R_TEMP_DIR_DASHBOARD`). La ruta de R puede ajustarse en `tools/execute.py`.
+
+Desde la carpeta del curso, `python dashboard/tools/import_advanced.py` actualiza los temas 6–8 desde los cuadernos ejecutados, conserva el código y las figuras y reconstruye el ZIP. Para ejecutar Redes neuronales, instala `downloads/requirements-redes.txt` en un entorno con Python 3.12.
 
 ## Créditos
 
